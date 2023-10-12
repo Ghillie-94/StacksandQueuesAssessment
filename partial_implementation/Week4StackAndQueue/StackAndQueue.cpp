@@ -14,14 +14,21 @@ ArrayStack::ArrayStack()
 int ArrayStack::Pop()
 {
     // TODO: ASSESSED [1]
-    return 0;
+    if (stackTop == 0)
+    {
+        return 0;
+    }
+    int value = arr[stackTop];
+    stackTop--;
+    return value;
 }
 
 // Check first element, return value.
 int ArrayStack::Peek()
 {
+    int value = arr[stackTop];
     // TODO: ASSESSED [0.5]
-    return 0;
+    return value;
 }
 
 // Add element to top of stack, 
@@ -30,6 +37,12 @@ void ArrayStack::Push(int n)
 {
     // TODO: ASSESSED [1]
     // [0.5] if correct without resizing.
+    if (stackTop == capacity - 1)
+    {
+        DoubleArray();
+    }
+    stackTop++;
+    arr[stackTop] = n;
     
 }
 
@@ -68,6 +81,8 @@ Node::Node(int n)
 QueueList::QueueList()
 {
     // TODO: ASSESSED [0.5]
+    front = nullptr;
+    back = nullptr;
 }
 
 // Add item to back of queue
