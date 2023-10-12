@@ -89,13 +89,37 @@ QueueList::QueueList()
 void QueueList::Enqueue(int n)
 {
     // TODO: ASSESSED [1]
+    Node* temp = new Node(n);
+    if (!front)
+    {
+        front = temp;
+        back = temp;
+    }
+    else
+    {
+        back->next = temp;
+        back = temp;
+    }
+
 }
 
 // Remove item from front of queue
 int QueueList::Dequeue()
 {
     // TODO: ASSESSED [1]
-    return 0;
+    if (!front)
+    {
+        return 0;
+    }
+    Node* temp = front;
+    int value = front->data;
+    front = front->next;
+    if (!front)
+    {
+        front = nullptr;
+        back = nullptr;
+    }
+    return value;
 }
 
 // Print elements in Stack neatly
